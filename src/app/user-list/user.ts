@@ -10,3 +10,10 @@ export interface IUser {
     phone: string,
     website: string
 }
+
+export interface IPost {
+    id: number;
+    title: string;
+    body: string;
+    userId: number;
+}

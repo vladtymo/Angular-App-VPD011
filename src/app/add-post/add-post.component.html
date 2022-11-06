@@ -1,0 +1,17 @@
+<h2>Create New Post</h2>
+
+<form [formGroup]="createForm" (ngSubmit)="createPost()">
+    <label>
+        <span>Title: </span>
+        <input formControlName="title" type="text">
+    </label>
+    <label>
+        <span>Body: </span>
+        <input formControlName="body" type="text">
+    </label>
+    <label>
+        <span>User ID: </span>
+        <input formControlName="userId" type="number">
+    </label>
+    <button type="submit">Create Post</button>
+</form>
