@@ -5,18 +5,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddPostComponent } from './add-post/add-post.component';
 
 // Material
-import { MatTableModule } from '@angular/material/table';
-import { AddPostComponent } from './add-post/add-post.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './account/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    AddPostComponent
+    AddPostComponent,
+    NotFoundComponent,
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +37,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

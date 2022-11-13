@@ -1,6 +1,8 @@
-<h1>Angular Application</h1>
-<hr>
+<app-header></app-header>
 
-<app-add-post></app-add-post>
+<main>
+    <!-- render content depends on the active route -->
+    <router-outlet></router-outlet>
+</main>
 
-<app-user-list></app-user-list>
+<!-- footer -->

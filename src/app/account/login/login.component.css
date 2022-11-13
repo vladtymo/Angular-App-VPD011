@@ -1,0 +1,12 @@
+.container {
+    width: 50%;
+    margin: 10px auto;
+}
+h2 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,30 @@
+<mat-toolbar>
+    <button mat-icon-button routerLink="/">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button routerLink="/users">
+        <mat-icon>supervised_user_circle</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/add-post">
+        <mat-icon>post_add</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/favorite">
+        <mat-icon>favorite</mat-icon>
+    </button>
+
+    <div class="move-right"></div>
+
+    <span *ngIf="accountService.isAuthenticated()">Hello, {{accountService.getCurrentUserEmail()}}</span>
+    <div *ngIf="accountService.isAuthenticated()">
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="!accountService.isAuthenticated()">
+        <button mat-icon-button routerLink="/login">
+            <mat-icon>login</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
