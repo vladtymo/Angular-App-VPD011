@@ -1,37 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILoginModel } from './user';
+import { environment } from 'src/environments/environment';
+import { ILoginModel, ILoginResponse } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  userKey = 'user-key'
-  apiUrl = 'https://localhost:7173/api/';
+  userKey = 'user-token'
+  controllerUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.controllerUrl = environment.apiUrl + "accounts/";
+   }
 
-  login(model: ILoginModel): Observable<any> {
-    return this.http.post(this.apiUrl + 'accounts/login', model);
+  login(model: ILoginModel): Observable<ILoginResponse> {
+    return this.http.post<ILoginResponse>(this.controllerUrl + 'login', model);
   }
   logout(): void {
-    this.http.post(this.apiUrl + 'accounts/logout', null).subscribe(res => {
-      this.removeUser();
+    this.http.post(this.controllerUrl + 'logout', null).subscribe(res => {
+      this.removeToken();
     });
   }
 
-  saveUser(email: string): void {
-    localStorage.setItem(this.userKey, email);
+  saveToken(token: string): void {
+    localStorage.setItem(this.userKey, token);
   }
-  getCurrentUserEmail(): string | null {
+  // getCurrentUserEmail(): string | null {
+  //   return localStorage.getItem(this.userKey);
+  // }
+  getToken(): string | null {
     return localStorage.getItem(this.userKey);
   }
   isAuthenticated(): boolean {
     return localStorage.getItem(this.userKey) != null;
   }
-  removeUser(): void {
+  removeToken(): void {
     localStorage.removeItem(this.userKey);
   }
 }

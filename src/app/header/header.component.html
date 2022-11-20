@@ -13,10 +13,13 @@
     <button mat-icon-button routerLink="/favorite">
         <mat-icon>favorite</mat-icon>
     </button>
+    <button mat-icon-button routerLink="/phones">
+        <mat-icon>phone_iphone</mat-icon>
+    </button>
 
     <div class="move-right"></div>
 
-    <span *ngIf="accountService.isAuthenticated()">Hello, {{accountService.getCurrentUserEmail()}}</span>
+    <!-- <span *ngIf="accountService.isAuthenticated()">Hello, {{accountService.getCurrentUserEmail()}}</span> -->
     <div *ngIf="accountService.isAuthenticated()">
         <button mat-icon-button (click)="logout()">
             <mat-icon>logout</mat-icon>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './account/login/login.component';
+import { JwtInterceptor } from './account/jwt.interceptor';
+import { PhonesComponent } from './phones/phones.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { LoginComponent } from './account/login/login.component';
     AddPostComponent,
     NotFoundComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    PhonesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,11 @@ import { LoginComponent } from './account/login/login.component';
     MatSelectModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

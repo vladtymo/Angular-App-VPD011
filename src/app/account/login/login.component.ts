@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.accountService.login(user).subscribe(result => {
       console.log(result);
 
-      this.accountService.saveUser(user.email);
+      this.accountService.saveToken(result.token);
 
       this.router.navigateByUrl('/');
     }, error => {
